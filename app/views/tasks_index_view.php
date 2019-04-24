@@ -1,7 +1,7 @@
 <h2>All tasks</h2>
 <ul>
     <?php foreach ($this->tasks as $task):        ?>
-    <li><a href="/create"> <?= $task['name'] ?></a></li>
+    <li> <?= $task['name'] ?></li>
     <?php endforeach;?>
 </ul>
 
