@@ -4,5 +4,6 @@
     <li><?= $task['name'] ?></li>
     <?php endforeach;?>
 </ul>
+<input type="submit" value="submit" />
 
 
