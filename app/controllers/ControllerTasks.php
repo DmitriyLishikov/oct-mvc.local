@@ -14,7 +14,7 @@ class ControllerTasks extends Controller {
 
     public function action_index() {
         $this->view->tasks = $this->model->all();
-        $this->view->render('tasks_index_view');
+        $this->view->render('tasks_index_view');     
     }
 
 }

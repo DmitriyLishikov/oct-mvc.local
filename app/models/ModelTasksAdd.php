@@ -2,11 +2,16 @@
 
 namespace models;
 
-use models\ModelTasks;
+use core\Model;
 use mysqli;
 
-class ModelTasksAdd extends ModelTasks{
-
+class ModelTasksAdd extends Model {
+     /**
+      *
+      * @var mysqli
+      */
+    protected $db;
+    
     public $task;
 
     public function __construct($task) {
@@ -25,10 +30,11 @@ class ModelTasksAdd extends ModelTasks{
         }
         return false;
     }
-    
-    public function save(){
-        if(!validate($task)){
+
+    public function save() {
+        if (!validate($task)) {
             $sql = "INSERT INTO tasks (name) VALUES ('. $task .')";
+            header('Location: ' . $URL_SITE . 'tasks_index_view');
         }
     }
 
