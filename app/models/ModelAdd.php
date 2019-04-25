@@ -16,8 +16,10 @@ class ModelAdd extends ModelTasks {
 
     public function __construct($task) {
         parent::__construct();
-        $this->task = filter_input(INPUT_POST, 'task');;
+        $this->task = filter_input(INPUT_POST, 'task');
     }
+
+ 
 
     public function validate($task) {
         if (empty($task)) {
