@@ -11,7 +11,9 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/tasks">Tasks</a></li>
                 <li><a href="/create">create</a></li>
-                <li><a href="#">TODO</a></li>
+                <li><a href="/questions">Questions</a></li>
+                <li><a href="#">ask</a></li>
+
             </ul>
         </nav>
         <main>
