@@ -6,7 +6,7 @@ document.getElementById('courses').onclick = function () {
             if (xhr.status === 200) {
                 var json_text = xhr.responseText;
                 var courses = JSON.parse(json_text); //разбирает строку на объект
-                for(var i=0; i< courses.length;i++){
+                for (var i = 0; i < courses.length; i++) {
                     alert(courses[i].ccy); //TODO выводи как хочешь
                 }
             } else {
@@ -17,8 +17,8 @@ document.getElementById('courses').onclick = function () {
     xhr.send();
 };
 
-function getQuestions(){
-     var xhr = new XMLHttpRequest();
+function getQuestions() {
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -34,7 +34,7 @@ function getQuestions(){
     xhr.send();
 }
 
-document.getElementById('questions-btn').onclick=function(){
-    var questions=getQuestions();
+document.getElementById('questions-btn').onclick = function () {
+    var questions = getQuestions();
     console.log(questions);
 };
