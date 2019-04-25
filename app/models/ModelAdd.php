@@ -5,7 +5,7 @@ namespace models;
 use core\Model;
 use mysqli;
 
-class ModelTasksAdd extends Model {
+class ModelAdd extends Model {
      /**
       *
       * @var mysqli
@@ -33,7 +33,6 @@ class ModelTasksAdd extends Model {
     public function save() {
         if (!validate($task)) {
             $sql = "INSERT INTO tasks (name) VALUES ('. $task .')";
-            header('Location: ' . $URL_SITE . 'tasks_index_view');
         }
     }
 
