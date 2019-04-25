@@ -16,11 +16,15 @@ class ModelAdd extends ModelTasks {
 
     public function __construct($task) {
         parent::__construct();
-        $this->task = filter_input(INPUT_POST, 'task');
+        $this->task = $task;
     }
 
- 
+    public function getTask(){
+        $task = filter_input(INPUT_POST, 'task');
+        return $task;
+    }
 
+    
     public function validate($task) {
         if (empty($task)) {
             return true;
@@ -28,7 +32,7 @@ class ModelAdd extends ModelTasks {
         return false;
     }
 
-    public function save($task) {
+    public function save() {
         if (!validate($task)) {
             $sql = "INSERT INTO tasks (name) VALUES ('".$task."')";
         }
