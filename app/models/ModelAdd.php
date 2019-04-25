@@ -28,7 +28,7 @@ class ModelAdd extends ModelTasks {
         return false;
     }
 
-    public function save() {
+    public function save($task) {
         if (!validate($task)) {
             $sql = "INSERT INTO tasks (name) VALUES ('".$task."')";
         }
