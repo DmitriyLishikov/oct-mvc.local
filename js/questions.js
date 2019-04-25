@@ -17,7 +17,7 @@ document.getElementById('courses').onclick = function () {
     xhr.send();
 };
 
-function getQuestions() {
+document.getElementById('questions-btn').onclick = function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
@@ -25,16 +25,15 @@ function getQuestions() {
             if (xhr.status === 200) {
                 var json_text = xhr.responseText;
                 var questions = JSON.parse(json_text); //разбирает строку на объект              
-                return questions;
+                //TODO вывести в табличку
+                var tbody = document.querySelector('#questions tbody');
+                for (var i = 0; i < questions.length; i++) {
+                    tbody.innerHTML += '<td>' + (i + 1) + '</td><td>' + questions[i].author + '</td><td>' + questions[i].text + '</td>';
+                }
             } else {
                 return false;
             }
         }
     };
     xhr.send();
-}
-
-document.getElementById('questions-btn').onclick = function () {
-    var questions = getQuestions();
-    console.log(questions);
 };
