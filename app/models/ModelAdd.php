@@ -2,10 +2,10 @@
 
 namespace models;
 
-use core\Model;
+use models\ModelTasks;
 use mysqli;
 
-class ModelAdd extends Model {
+class ModelAdd extends ModelTasks {
      /**
       *
       * @var mysqli
@@ -15,12 +15,8 @@ class ModelAdd extends Model {
     public $task;
 
     public function __construct($task) {
-        $this->task = $task;
-    }
-
-    public function getTask() {
-        $task = filter_input(INPUT_POST, 'task');
-        return $task;
+        parent::__construct();
+        $this->task = filter_input(INPUT_POST, 'task');;
     }
 
     public function validate($task) {
@@ -32,7 +28,7 @@ class ModelAdd extends Model {
 
     public function save() {
         if (!validate($task)) {
-            $sql = "INSERT INTO tasks (name) VALUES ('. $task .')";
+            $sql = "INSERT INTO tasks (name) VALUES ('".$task."')";
         }
     }
 
