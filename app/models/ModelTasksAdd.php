@@ -15,7 +15,6 @@ class ModelTasksAdd extends Model {
     public $task;
 
     public function __construct($task) {
-        parent::__construct();
         $this->task = $task;
     }
 
