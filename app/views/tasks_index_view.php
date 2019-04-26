@@ -5,6 +5,6 @@
     <?php endforeach;?>
 </ul>
 
-<input type="submit" value="submit" />
+<input type="button" value="add task" name="add_task" />
 
 

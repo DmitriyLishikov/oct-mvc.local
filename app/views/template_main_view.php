@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <script src="../../js/task.js" type="text/javascript"></script>
     </head>
     <body>
         <h1>My site</h1>
@@ -10,10 +11,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/tasks">Tasks</a></li>
-                <li><a href="/create">create</a></li>
                 <li><a href="/questions">Questions</a></li>
-                <li><a href="#">ask</a></li>
-
             </ul>
         </nav>
         <main>

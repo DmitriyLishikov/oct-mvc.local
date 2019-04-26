@@ -12,4 +12,9 @@ class ModelTasks extends Model {
         $this->table = 'tasks';
     }
 
+    public function save($task) {
+	$query = "INSERT INTO `tasks` (name) VALUES ($task);";
+	$result = $this->db->query($query);
+    }
+    
 }
