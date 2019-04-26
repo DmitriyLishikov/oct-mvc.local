@@ -3,6 +3,6 @@
 <button id="add_task" type="button">add task</button>
 <ul>
     <?php foreach ($this->tasks as $task): ?>
-        <li> <?= $task['name'] ?></li>
+        <li class='list'> <?= $task['name'] ?></li>
     <?php endforeach; ?>
 </ul>

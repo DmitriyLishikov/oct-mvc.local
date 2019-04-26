@@ -34,6 +34,10 @@ class ControllerTasks extends Controller {
         } 
     }
 
+     public function action_edit() {   
+        $this->view->render('tasks_edit_view');
+    }
+    
     private function validate($task) {
         if (empty($task)) {
             return false;
