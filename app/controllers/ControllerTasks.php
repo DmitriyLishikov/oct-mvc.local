@@ -18,10 +18,10 @@ class ControllerTasks extends Controller {
     }
 
     public function action_create() {
-        $this->view->render('tasks_create_view');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->action_add();
         }
+        $this->view->render('tasks_create_view');
     }
 
     public function action_add() {
@@ -30,9 +30,8 @@ class ControllerTasks extends Controller {
             $this->model->save($task);
             $url = 'http://' . $_SERVER['HTTP_HOST'] . '/tasks';
             header("Location: " . $url);
-        } else {
-            echo 'error';
-        }
+            exit();
+        } 
     }
 
     private function validate($task) {
