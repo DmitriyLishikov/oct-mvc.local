@@ -3,8 +3,7 @@ window.onload = function () {
     btn_index.onclick = function () {
         document.location.replace("http://oct-mvc.local/tasks/create");
     };
-
-
 };
+
 
 

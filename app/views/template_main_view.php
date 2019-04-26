@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <script src="../../js/task.js" type="text/javascript"></script>
+        <script src="../../js/tasks.js" type="text/javascript"></script>
     </head>
     <body>
         <h1>My site</h1>

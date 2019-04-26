@@ -14,32 +14,32 @@ class ControllerTasks extends Controller {
 
     public function action_index() {
         $this->view->tasks = $this->model->all();
-        $this->view->render('tasks_index_view');     
+        $this->view->render('tasks_index_view');
     }
-    
-    private function validate($create){
-        if(empty($create)){
+
+    public function action_create() {
+        $this->view->render('tasks_create_view');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->action_add();
+        }
+    }
+
+    public function action_add() {
+        $task = filter_input(INPUT_POST, 'task');
+        if ($this->validate($task)) {
+            $this->model->save($task);
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/tasks';
+            header("Location: " . $url);
+        } else {
+            echo 'error';
+        }
+    }
+
+    private function validate($task) {
+        if (empty($task)) {
             return false;
         }
         return true;
     }
 
-     public function action_create() {
-        $task = filter_input(INPUT_POST, 'task');
-        if ($this->validate($task)) {
-            $this->model->save($task);
-            $url = $_SERVER['HTTP_ORIGIN'] . '/tasks';
-            header("Location: " . $url);
-        } else {
-            die('Добавьте вопрос!');
-        }
-    }
-    
-    public function action_creates() {
-        if($_SERVER['REQUEST_METHOD']==='POST'){
-            $this->saveEdition();
-        }
-        $this->view->render('tasks_create_view');
-    }
-    
 }
