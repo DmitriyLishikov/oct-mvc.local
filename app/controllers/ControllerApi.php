@@ -34,4 +34,8 @@ class ControllerApi extends Controller {
         $this->model->delete($delete);
     }
 
+    public function action_photo(){
+        var_dump($_FILES);
+    }
+    
 }

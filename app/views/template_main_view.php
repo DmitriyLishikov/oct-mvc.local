@@ -5,6 +5,7 @@
         <title></title>
         <link href="../../css/question.css" rel="stylesheet" type="text/css"/>
         <script src="../../js/tasks.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
         <h1>My site</h1>
@@ -13,6 +14,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/tasks">Tasks</a></li>
                 <li><a href="/questions">Questions</a></li>
+                <li><a href="/gallery">Gallery</a></li>
             </ul>
         </nav>
         <main>
