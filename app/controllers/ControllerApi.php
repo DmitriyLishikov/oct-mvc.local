@@ -23,4 +23,15 @@ class ControllerApi extends Controller {
         echo $json_text;
     }
 
+    public function action_addquestion() {
+        //TODO валидация входящих данных
+        $question = filter_input_array(INPUT_POST);
+        $this->model->add($question);
+    }
+
+    public function action_delete() {
+        $delete = filter_input(INPUT_POST, 'delete');
+        $this->model->delete($delete);
+    }
+
 }
