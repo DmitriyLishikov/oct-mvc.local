@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link href="../../css/question.css" rel="stylesheet" type="text/css"/>
         <script src="../../js/tasks.js" type="text/javascript"></script>
     </head>
     <body>
