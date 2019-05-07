@@ -2,17 +2,15 @@
 //    var xhr = new XMLHttpRequest();
 //    xhr.open('GET', 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
 //    xhr.onreadystatechange = function () {
-//        if (xhr.readyState === 4) {
-//            if (xhr.status === 200) {
-//                var json_text = xhr.responseText;
-//                var courses = JSON.parse(json_text); //разбирает строку на объект
-//                for (var i = 0; i < courses.length; i++) {
-//                    alert(courses[i].ccy); //TODO выводи как хочешь
-//                }
-//            } else {
-//                alert('error : ' + xhr.statusText);
-//            }
-//        }
+//	if (xhr.readyState === 4) {
+//	    if (xhr.status === 200) {
+//		var json_text = xhr.responseText;
+//		var courses = JSON.parse(json_text);
+//		for (var i = 0; i < courses.length; i++) {
+//		    alert(courses[i].ccy);//TODO выводи как хочешь
+//		}
+//	    }
+//	}
 //    };
 //    xhr.send();
 //};
@@ -21,28 +19,40 @@ function showQuestions() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var json_text = xhr.responseText;
-                var questions = JSON.parse(json_text); //разбирает строку на объект              
-                //TODO вывести в табличку
-                var tbody = document.querySelector('#questions tbody');
-                tbody.innerHTML = '';
-                for (var i = 0; i < questions.length; i++) {
-                    tbody.innerHTML += '<td>' + (i + 1) + '</td><td>' + questions[i].author + '</td><td>' + questions[i].text + '</td><td><form><button type="submit" name="delete"   value="' + questions[i].id + '">delete</button></form>';
-                }
-                //delete
-                var delete_elem = document.getElementsByName('delete');
-                for (var i = 0; i < delete_elem.length; i++) {
-                    delete_elem[i].onclick = function () {
-                        deleteQuestion();
-                        event.preventDefault();
-                    };
-                }
-            } else {
-                return false;
-            }
-        }
+	if (xhr.readyState === 4) {
+	    if (xhr.status === 200) {
+		var json_text = xhr.responseText;
+		var questions = JSON.parse(json_text);
+		var tbody = document.querySelector('#questions tbody');
+		tbody.innerHTML = '';
+		for (var i = 0; i < questions.length; i++) {
+		    var tr = '<tr>\n\
+<td>' + (i + 1) + '</td>\n\
+<td>' + questions[i].author + '</td>\n\
+<td>' + questions[i].text + '</td>\n\
+<td>' + '<form name="delete"><input type="hidden" name="id" value="' + questions[i].id + '"><button>delete</button></form>' + '</td>\n\
+</tr>';
+		    tbody.innerHTML += tr;
+
+
+		}
+		var delete_form = document.getElementsByName('delete');
+		for (var i = 0; i < delete_form.length; i++) {
+		    delete_form[i].onsubmit = function (e) {
+			var id = this.elements.id.value;
+			deleteQuestion(id);
+
+
+			e.preventDefault();
+		    }
+		}
+
+
+
+	    } else {
+		return false;
+	    }
+	}
     };
     xhr.send();
 }
@@ -54,32 +64,29 @@ function sendQuestion(author, text) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/addquestion');
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                showQuestions();
-            }
-        }
+	if (xhr.readyState === 4) {
+	    if (xhr.status === 200) {
+		showQuestions();
+	    }
+	}
     };
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(post_data);
 }
-
-function deleteQuestion(delete_elem) {
-    var btn_id = 'id=' + delete_elem;
+function deleteQuestion(id) {
+    var post_id = 'id='+id;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/deletequestion');
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                showQuestions();
-            }
-        }
+	if (xhr.readyState === 4) {
+	    if (xhr.status === 200) {
+		showQuestions();
+	    }
+	}
     };
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send(btn_id);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(post_id);
 }
-
-
 document.forms.question.onsubmit = function (event) {
     var form_elements = this.elements;
     var author = form_elements.author.value;
