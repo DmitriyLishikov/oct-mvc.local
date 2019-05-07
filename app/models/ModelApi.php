@@ -16,8 +16,8 @@ class ModelApi extends Model {
         $this->db->query($query);
     }
 
-    public function delete($delete) {
-        $query = "DELETE FROM " . $this->table . " WHERE id=".$delete.";";
+    public function delete($id) {
+        $query = "DELETE FROM " . $this->table . " where id=" . $id . ";";
         $this->db->query($query);
     }
 
